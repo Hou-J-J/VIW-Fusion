@@ -150,22 +150,6 @@ Green path is VIO odometry; red path is odometry under visual loop closure.
     rosbag play YOUR_DATASET_FOLDER/MH_01_easy.bag
 ```
 
-Run on ridgeback:
-
-./run_mono_imu_ridgeback.sh
-
-Run on lab_with_haikang dataset:
-
-./run_mono_imu_on_ours.sh
-
-
-You need to modify the following variable name:
-```
-1.dataset path: run_mono_imu_*.sh
-2.output path: ./config/haikang_camera(or realsense_d435i)/your_yaml_name(haikang_viw or realsense_stereo_imu_config_ridgeback).yaml
-3.opencv and cv_bridge path: all cmakelists file
-```
-
 ### 3.2 Stereo cameras + IMU
 
 ```
@@ -225,6 +209,22 @@ Green path is VIO odometry; red path is odometry under visual loop closure.
 
 ## 6. Run with your devices 
 VIO is not only a software algorithm, it heavily relies on hardware quality. For beginners, we recommend you to run VIO with professional equipment, which contains global shutter cameras and hardware synchronization.
+
+Run on ridgeback:
+
+./run_mono_imu_ridgeback.sh
+
+Run on lab_with_haikang dataset:
+
+./run_mono_imu_on_ours.sh
+
+
+You need to modify the following variable name:
+```
+1.dataset path: run_mono_imu_*.sh
+2.output path: ./config/haikang_camera(or realsense_d435i)/your_yaml_name(haikang_viw or realsense_stereo_imu_config_ridgeback).yaml
+3.opencv and cv_bridge path: all cmakelists file
+```
 
 ### 6.1 Configuration file
 Write a config file for your device. You can take config files of EuRoC and KITTI as the example. 
