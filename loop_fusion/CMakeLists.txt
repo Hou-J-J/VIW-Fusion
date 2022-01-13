@@ -6,6 +6,7 @@ set(CMAKE_CXX_FLAGS "-std=c++11")
 #-DEIGEN_USE_MKL_ALL")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3 -Wall -g")
 
+set(cv_bridge_DIR /usr/local/share/cv_bridge/cmake)
 find_package(catkin REQUIRED COMPONENTS
     roscpp
     std_msgs
@@ -15,7 +16,7 @@ find_package(catkin REQUIRED COMPONENTS
     roslib
     )
 
-find_package(OpenCV)
+find_package(OpenCV 3.4.5 PATHS /home/houj/dependency/opencv-3.4.5/build)
 
 
 find_package(Ceres REQUIRED)

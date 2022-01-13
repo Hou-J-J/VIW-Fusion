@@ -150,6 +150,22 @@ Green path is VIO odometry; red path is odometry under visual loop closure.
     rosbag play YOUR_DATASET_FOLDER/MH_01_easy.bag
 ```
 
+Run on ridgeback:
+
+./run_mono_imu_ridgeback.sh
+
+Run on lab_with_haikang dataset:
+
+./run_mono_imu_on_ours.sh
+
+
+You need to modify the following variable name:
+```
+1.dataset path: run_mono_imu_*.sh
+2.output path: ./config/haikang_camera(or realsense_d435i)/your_yaml_name(haikang_viw or realsense_stereo_imu_config_ridgeback).yaml
+3.opencv and cv_bridge path: all cmakelists file
+```
+
 ### 3.2 Stereo cameras + IMU
 
 ```

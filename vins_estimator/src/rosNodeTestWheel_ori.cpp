@@ -43,7 +43,7 @@ void img1_callback(const sensor_msgs::ImageConstPtr &img_msg)
     img1_buf.push(img_msg);
     m_buf.unlock();
 }
-void wheel_callback_origin(const nav_msgs::OdometryConstPtr &odom_msg)
+void wheel_callback(const nav_msgs::OdometryConstPtr &odom_msg)
 {
     double t = odom_msg->header.stamp.toSec();
     double dx = odom_msg->twist.twist.linear.x;
@@ -52,21 +52,6 @@ void wheel_callback_origin(const nav_msgs::OdometryConstPtr &odom_msg)
     double rx = odom_msg->twist.twist.angular.x;
     double ry = odom_msg->twist.twist.angular.y;
     double rz = odom_msg->twist.twist.angular.z;
-    Vector3d vel(dx, dy, dz);
-    Vector3d gyr(rx, ry, rz);
-    estimator.inputWheel(t, vel, gyr);
-    return;
-}
-
-void wheel_callback(const geometry_msgs::TwistStamped &odom_msg)
-{
-    double t = odom_msg.header.stamp.toSec();
-    double dx = odom_msg.twist.linear.x;
-    double dy = odom_msg.twist.linear.y;
-    double dz = odom_msg.twist.linear.z;
-    double rx = odom_msg.twist.angular.x;
-    double ry = odom_msg.twist.angular.y;
-    double rz = odom_msg.twist.angular.z;
     Vector3d vel(dx, dy, dz);
     Vector3d gyr(rx, ry, rz);
     estimator.inputWheel(t, vel, gyr);

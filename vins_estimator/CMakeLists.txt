@@ -6,6 +6,7 @@ set(CMAKE_CXX_FLAGS "-std=c++11")
 #-DEIGEN_USE_MKL_ALL")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3 -Wall -g")
 
+set(cv_bridge_DIR /usr/local/share/cv_bridge/cmake)
 find_package(catkin REQUIRED COMPONENTS
     roscpp
     std_msgs
@@ -16,8 +17,7 @@ find_package(catkin REQUIRED COMPONENTS
     camera_models
     image_transport
         rosbag)
-set(OpenCV_DIR "/usr/local/share/OpenCV")
-find_package(OpenCV REQUIRED)
+find_package(OpenCV 3.4.5 PATHS /home/houj/dependency/opencv-3.4.5/build)
 
 # message(WARNING "OpenCV_VERSION: ${OpenCV_VERSION}")
 
@@ -27,7 +27,7 @@ include_directories(${CERES_INCLUDE_DIRS})
 #template sophus
 #set(Sophus_DIR "/home/td/slam/install/sophus/share/sophus/cmake/")
 #find_package(Sophus REQUIRED)
-include_directories(/home/td/slam/install/sophus/include)
+include_directories(/home/houj/projects/ov2_slam_ws/src/ov2slam/Thirdparty/Sophus)
 
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 find_package(Eigen3)
@@ -79,6 +79,9 @@ target_link_libraries(vins_node vins_lib)
 
 add_executable(viwo_node src/rosNodeTestWheel.cpp)
 target_link_libraries(viwo_node vins_lib)
+
+add_executable(viwo_node_origin src/rosNodeTestWheel_ori.cpp)
+target_link_libraries(viwo_node_origin vins_lib)
 
 #add_executable(viwo_gazebo_node src/rosNodeTestWheelGazebo.cpp)
 #target_link_libraries(viwo_gazebo_node vins_lib)

@@ -14,6 +14,7 @@
 #include <cstring>
 #include <eigen3/Eigen/Dense>
 #include <iostream>
+#include <vector>
 
 class Utility
 {
